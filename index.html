@@ -1,11 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Difference Calculator</title>
+  
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+.input-container {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+  </style>
 </head>
 <body>
-    
+  <div class="container">
+    <h1>Date Difference Calculator</h1>
+    <div class="input-container">
+      <label for="start-date">Start Date:</label>
+      <input type="date" id="start-date">
+    </div>
+    <div class="input-container">
+      <label for="end-date">End Date:</label>
+      <input type="date" id="end-date">
+    </div>
+    <button onclick="calculateDifference()">Calculate Difference</button>
+    <div id="result"></div>
+  </div>
+  <script>
+    function calculateDifference() {
+  const startDate = new Date(document.getElementById('start-date').value);
+  const endDate = new Date(document.getElementById('end-date').value);
+
+  if (!startDate || !endDate) {
+    document.getElementById('result').innerText = 'Please select both start and end dates.';
+    return;
+  }
+
+  const difference = endDate - startDate;
+  const daysDifference = Math.ceil(difference / (1000 * 60 * 60 * 24));
+
+  document.getElementById('result').innerText = `The difference between the two dates is ${daysDifference} days.`;
+}
+
+  </script>
 </body>
 </html>
